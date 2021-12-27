@@ -13,22 +13,19 @@ const App= () => {
   })
 
 
-  const handleLeftClicks = () => {
-    const newClicks = {
+  const handleLeftClicks = () => {  
+    setClicks({
       ...clicks,
       left: clicks.left + 1
       
-    }
-    setClicks(newClicks)
+    })
   }
 
-  const handleRightClicks = () => {
-    const newClicks = {
+  const handleRightClicks = () => {  
+    setClicks({
       ...clicks,
       right: clicks.right+1
-    }
-
-    setClicks(newClicks)
+    })
   }
   
   
