@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 const History = (props) => {
+  
   if(props.allClicks.length === 0){
 
     return (
@@ -19,6 +20,15 @@ const History = (props) => {
     </div>
   )
 }
+const Button = ({handleClick,text}) => (
+  
+  
+  <button onClick={handleClick}>
+    {text}
+  </button>
+  
+  
+)
 
 const App= () => {
 
@@ -27,23 +37,22 @@ const App= () => {
 
   const [allClicks, setAll] = useState([])
 
-  const Button = ({handleClick,text}) => {
-
-    return(
-      <button onClick={handleClick}>{text}</button>
-    )
-  }
+  
 
 
   const handleLeftClicks = () => {  
-    setLeft(left +1)
+    console.log('left click')
+    
     setAll(allClicks.concat('L')) 
+    setLeft(left +1)
     
   }
 
-  const handleRightClicks = () => {  
-    setRight(right +1)
+  const handleRightClicks = () => { 
+    console.log('right click') 
+    
     setAll(allClicks.concat('R'))
+    setRight(right +1)
     
   }
 
@@ -55,11 +64,11 @@ const App= () => {
   return (
     <div>
       {left}
-      <Button onClick= {handleLeftClicks} text="left" />
+      <Button handleClick= {handleLeftClicks} text="left" />
        
       
 
-      <Button onClick={handleRightClicks} text="right" />
+      <Button handleClick={handleRightClicks} text="right" />
         
       
 
@@ -69,7 +78,7 @@ const App= () => {
         
       
     </div>
-  );
+  )
 }
 
 export default App;
