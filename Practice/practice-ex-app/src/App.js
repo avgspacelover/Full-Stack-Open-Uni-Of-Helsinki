@@ -41,7 +41,7 @@ const App= () => {
 
 
   const handleLeftClicks = () => {  
-    console.log('left click')
+    
     
     setAll(allClicks.concat('L')) 
     setLeft(left +1)
@@ -49,7 +49,7 @@ const App= () => {
   }
 
   const handleRightClicks = () => { 
-    console.log('right click') 
+     
     
     setAll(allClicks.concat('R'))
     setRight(right +1)
