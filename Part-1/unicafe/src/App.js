@@ -1,5 +1,4 @@
 
-
 import React, {useState} from 'react'
 
 const course = {
@@ -154,9 +153,6 @@ const Vote = (props) => {
 }
 
 
-
-
-
 const App = ()=>{
   
   const [good, setGood] = useState(0)
@@ -171,11 +167,7 @@ const App = ()=>{
   const pPerc= (((good-bad)/good)*100)
   const k=Math.floor(Math.random() *len);
   //const copy= {...points}
-
   
-
-  
-
   const handleGoodClick = () => {
     setGood(good+1)
   }
@@ -209,9 +201,6 @@ const App = ()=>{
 
   }
 
-  
-
-
   return (
     <div>
       
@@ -241,7 +230,7 @@ const App = ()=>{
         <Head head={"Anecdote of The Day"}/>
 
         <Anecdote quote={handleQuoteSelect} /> 
-        
+
         <Vote  voteForQ={handleVoteCount} />
         
         <br/><br/>
