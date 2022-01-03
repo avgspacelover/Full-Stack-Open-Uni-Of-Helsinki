@@ -1,21 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react'
 
+const App = (props) => {
+  const { notes } = props
 
-const App = () => {
-  const [value, setValue] = useState(10)
-  
-  const setToValue = (newValue)=> {
-    setValue(newValue)
-  }
-  
   return (
     <div>
-      {value}
-      <button onClick={()=>setToValue(1000)}>thousand</button>
-      <button onClick={()=>setToValue(0)}>reset</button>
-      <button onClick={()=>setToValue(value + 1)}>increment</button>
+      <h1>Notes</h1>
+      <ul>
+        <li>{notes[0].content}</li>
+        <li>{notes[1].content}</li>
+        <li>{notes[2].content}</li>
+      </ul>
     </div>
   )
 }
 
-export default App;
+export default App
