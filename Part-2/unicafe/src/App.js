@@ -1,25 +1,78 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const course = {
+  name:'Half Stack application development',
+  parts: [
+  {
+    name:'Fundamentals of React',
+    exercises: 10
+  },
+  {
+    name:'Using props to pass data',
+    exercises:7
+  },
+  {
+    name:'State of a component',
+    exercises:14
+  }
+]
 }
 
-export default App;
+
+
+const Header = (c)=>{ 
+  
+  return (    
+    <h1>{c.course.name}</h1>   
+  )
+}
+const Part = (p)=>{
+  return(   
+    <p>
+      {p.part} , {p.exercise}
+    </p>     
+  )
+}
+const Content = (p)=>{
+  return (    
+    <div>
+      <Part part={p.parts[0].name} exercise={p.parts[0].exercises} />
+
+      <Part part={p.parts[1].name} exercise={p.parts[1].exercises}/>
+
+      <Part part={p.parts[2].name} exercise={p.parts[2].exercises}/>
+    </div>    
+  )
+}
+
+const Total = (p)=>{
+  return (
+    <div>
+        <p>
+           Number of exercises {p.parts[0].exercises + p.parts[1].exercises + p.parts[2].exercises}
+        </p>
+    </div> 
+  )
+}
+
+
+
+const App = ()=>{
+  
+
+  return (
+    <div>
+      
+        <Header course={course}/>
+
+        <Content parts={course.parts}/>
+
+        <Total parts={course.parts}/>
+
+      
+        
+
+    </div>
+  )}
+
+  export default App;
