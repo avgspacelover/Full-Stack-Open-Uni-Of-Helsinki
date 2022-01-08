@@ -52,17 +52,18 @@ const Course = (props) => {
 
   return (
     <div>
-      {props.course.map((item) => {
-        return (
-          <div>
-            <Header key={item.id} course={item} />
+        <h1> Web Development Curriculum</h1>
+        {props.course.map((item) => {
+            return (
+                <div>
+                    <Header key={item.id} course={item} />
 
-            <Content key={item.id} parts={item} />
+                    <Content key={item.id} parts={item} />
 
-            <Total key={item.id} parts={item} />
-          </div>
-        );
-      })}
+                    <Total key={item.id} parts={item} />
+                </div>
+            );
+        })}
     </div>
   );
 };
