@@ -1,5 +1,89 @@
 import React, { useState } from 'react'
 
+const Contact = (props) => {
+  return (
+
+    <li >{props.name} : {props.number}</li>
+
+  )
+}
+
+const AddContact = (props) => {
+
+  return (  
+
+    <form onSubmit={props.addContact}>
+          <h2> Add New Contact</h2>
+          <div>
+            Name: <input value={props.newName} onChange={props.handleNameChange}/>
+          </div>
+          <br/>
+          <div>
+            Number: <input value={props.newNumber} onChange={props.handleNumberChange}/>
+          </div>
+          <br />
+          <div>
+            <button type="submit">add</button>
+          </div>
+      
+    </form>
+
+  )
+}
+const SearchBookFn = (props) => {
+
+  return (
+    <div>
+      <div>
+            Name: 
+              <input value={props.nameSearch} onChange={props.handleNameSearch}/>
+          </div>
+
+          <br/>
+          <div>
+            <button onClick={()=>props.setFilter(!props.filter)}>{props.filter?"Show All":"Search"}</button>
+
+          </div> 
+        
+    </div>
+
+  )
+}
+
+
+const SearchbookList = (props) => {
+
+  return (
+    <div>
+      <ul style={{listStyleType:"none"}}>
+        {props.search.map((item)=>
+          < Contact key={item.id} name={item.name} number={item.number} />)}
+
+      </ul>
+    </div>
+
+  )
+}
+
+const PhonebookList = (props) => {
+
+  return (
+    <div>
+      <ul style={{listStyleType:"none"}}>
+        {props.persons.map((item)=>
+          < Contact key={item.id} name={item.name} number={item.number} />)}
+
+      </ul>
+        
+    </div>
+
+  )
+}
+
+
+
+
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas',
@@ -10,21 +94,15 @@ const App = () => {
     { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
     { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
   ]) 
+
+  //--STATE MANAGEMENT--------------------------------------
   const [newName, setNewName] = useState('')
 
   const [newNumber, setNewNumber] = useState('')
 
   const [nameSearch, setNameSearch] = useState('')
   const [filter, setFilter]= useState(false)
-
-  const Contact = (props) => {
-    return (
-
-      <li >{props.name} : {props.number}</li>
-
-    )
-  }
-
+//--EVENT HANDLERS--------------------------------------
   const handleNameChange= (event) => { 
     setNewName(event.target.value)
   }
@@ -35,9 +113,9 @@ const App = () => {
 
   const handleNameSearch=(event) => {
 
-    setNameSearch(event.target.value)
+    setNameSearch(event.target.value)   
   }
-
+//---------LoGIC FUNCTIONS----------------------------------------
   const checkForContactinBook=(nameStr, numberStr)=>{
     console.log('check handle',nameStr, persons[0].name)
 
@@ -79,64 +157,24 @@ const App = () => {
   }
 
   const search=persons.filter(item => filter?item.name.toLowerCase().includes(nameSearch.toLowerCase()):item)
-  
-
-  
+   
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <div>
-          <h2> Search </h2>
-          <div>
-            Name: 
-              <input value={nameSearch} onChange={handleNameSearch}/>
-          </div>
-
-          <br/>
-          <div>
-          <button onClick={()=>setFilter(!filter)}>Search</button>
-
-          </div>
-          
-          
-
-        
-        <div>
-          <ul style={{listStyleType:"none"}}>
-            {search.map((item)=>
-              < Contact key={item.id} name={item.name} number={item.number} />)}
-
-            </ul>
-        </div>
-
-      </div>
-        
       
-        <form onSubmit={addContact}>
-          <h2> Add New Contact</h2>
-          <div>
-            Name: <input value={newName} onChange={handleNameChange}/>
-          </div>
-          <br/>
-          <div>
-            Number: <input value={newNumber} onChange={handleNumberChange}/>
-          </div>
-          <br />
-          <div>
-            <button type="submit">add</button>
-          </div>
+        <h2> Search </h2>
+          
+          <SearchBookFn nameSearch={nameSearch} handleNameSearch={handleNameSearch} filter={filter} setFilter={setFilter} />
+              
+          <SearchbookList search={search} />
       
-        </form>
-      <h2>Numbers</h2>
-      <div>
-        <ul style={{listStyleType:"none"}}>
-        {persons.map((item)=>
-          < Contact key={item.id} name={item.name} number={item.number} />)}
+          <AddContact addContact={addContact} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange} />
+      
+        <h2>Numbers</h2>
+      
+          <PhonebookList persons={persons} />
 
-        </ul>
-        
-      </div>
     </div>
   )
 }
