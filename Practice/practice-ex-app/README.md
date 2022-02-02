@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-----------------------------------------------------
+
+- READS:
+
+     - https://reactjs.org/docs/hooks-effect.html
+     - https://developer.mozilla.org/en-US/docs/Web/API/fetch
+     - https://github.com/axios/axios
+     - https://docs.npmjs.com/about-npm
+     - https://www.youtube.com/watch?v=8aGhZQkoFbQ&ab_channel=JSConf
+     - https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+     - https://medium.com/techtrument/multithreading-javascript-46156179cf9a
+     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+     - https://www.youtube.com/watch?v=8zKuNo4ay8E&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=17&ab_channel=AkshaySaini
+     - https://www.youtube.com/watch?v=JRNToFh3hxU&ab_channel=LearnWebCode
+     - https://www.youtube.com/watch?v=IrHmpdORLu8&ab_channel=AkshaySaini
+     - 
