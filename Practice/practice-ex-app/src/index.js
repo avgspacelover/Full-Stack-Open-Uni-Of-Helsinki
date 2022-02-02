@@ -5,10 +5,19 @@ import axios from 'axios'
 axios
   .get('http://localhost:3001/notes')
   .then(response => {
-    const notes = response.data
-    console.log(notes)
-  })
 
+    const notes= response.data;
+
+    ReactDOM.render(
+
+      <App notes={notes} />,
+      document.getElementById('root')
+    
+      )
+
+
+  })
+/*
 const notes = [
   {
     id: 1,
@@ -29,8 +38,4 @@ const notes = [
     important: true
   }
 ]
-
-ReactDOM.render(
-  <App notes={notes} />,
-  document.getElementById('root')
-)
+*/
