@@ -73,6 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - READS:
 
      - https://reactjs.org/docs/hooks-effect.html
+     - https://reactjs.org/docs/hooks-reference.html#useeffect
      - https://developer.mozilla.org/en-US/docs/Web/API/fetch
      - https://github.com/axios/axios
      - https://docs.npmjs.com/about-npm
