@@ -1,22 +1,34 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
-
+const api_key = 'a0bd72dcbb3325ad252750f67c236a15';
+//http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
 
 /*
 const divMagnify={
   transform: 'scale(4)'
 
 };
+
+
 */
 
 
 
 const Countryinfo = (props) => {
-  console.log('1 item name',props.cty.name)
-  console.log('multi item name',props.cty)
-  console.log('lang',props.cty.languages)
-  console.log('flag',props.cty.flag)   
+ const [weather,setWeather]= useState(null)
   
+  useEffect(()=>{
+    axios
+      .get(`http://api.openweathermap.org/data/2.5/weather?q=${props.cty.capital}&appid=${api_key}`)
+      .then(response => {
+        console.log(response.data)
+        setWeather(response.data)
+       
+      })}
+  ,[props.cty.capital])
+
+  console.log("weather",weather)
+  let url= "http://openweathermap.org/img/wn/@2x.png" +weather.weather.icon+"@2x.png"
   return(
     <div>
 
@@ -36,68 +48,55 @@ const Countryinfo = (props) => {
         })}
                 
       </ul>
-      <h3>Flag</h3>
+      
 
       <div >
+        <h3>Flag</h3>
+
         {props.cty.flag}
       </div>
 
+      {weather !== null && 
+        <div>
+        <h3>weather in {props.cty.capital}</h3>
+          <p>Temperature: {Math.ceil(weather.main.temp -273.15)} Celsius</p>
+          <img src={url} alt="weather icon"/>
+  
+          <p>Wind Speed: {weather.wind.speed} m/s</p>
+  
+        </div> }
+      
       
     </div>
   )
 }
 
 
-const Displaycountry= props => {
-  const [showInfo, setShowInfo] = useState(false);
+const Displaycountry = (props) => {
+  const [displayCountryIndex, setDisplayCountryIndex] = useState(-1);
+  
 
-  console.log("length", props.name.length)
-  let len= props.name.length;
+  if (props.name.length > 10) {
+    return <div>Too many matches, specify another filter</div>;
+  }
 
-   if(len>10){
-     console.log('too many')
-      return(
-          <div>Too many matches, specify another filter</div>
-      );
-    } else if(len===1){
-      
-      return <Countryinfo cty={props.name[0]} />
-
-    } else if(1<len && len<=10){
-    
-      return (
-        <div>
-          {props.name.map((item,index)=> {
-            console.log("item", item);
-            return( 
-              
-              
-              <li key={index}>
-                {item.name.common}
-                  &nbsp;
-                  &nbsp;
-                  {showInfo ? 
-                    <Countryinfo cty={item}/> : 
-                    <button onClick={() => setShowInfo(true)}>
-                    Show
-                    </button>
-                
-                  }
-                </li>
-              
-              
-              
-              );
-          })}
-
-        </div>
-        
-      );
-
-    }else {
-      return null
-    }
-}
+  return (
+    <div>
+      {props.name.map((item, index) => {
+        return (
+          <li key={index}>
+            {item.name.common}
+            &nbsp; &nbsp;
+            <button onClick={() => setDisplayCountryIndex(index)}>Show</button>
+          </li>
+        );
+      })}
+      {displayCountryIndex !== -1 && (
+        <Countryinfo cty={props.name[displayCountryIndex]} />
+      )}
+    </div>
+  );
+};
 
 function App() {
   const [countrydb, setCountrydb]= useState([])
@@ -115,7 +114,7 @@ function App() {
 
   const handleCountrySearch = (e)=>{
    
-    console.log(e.target.value)
+    
     setCountryName(countrydb.filter(item =>{
 
       return item.name.common.toLowerCase().includes(e.target.value.toLowerCase())
