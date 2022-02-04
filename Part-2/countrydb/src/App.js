@@ -1,7 +1,10 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
-const api_key = 'a0bd72dcbb3325ad252750f67c236a15';
+const api_key = process.env.api_key;
+
+//const api_key = 'a0bd72dcbb3325ad252750f67c236a15';
 //http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
+// https://openweathermap.org/weather-conditions
 
 /*
 const divMagnify={
