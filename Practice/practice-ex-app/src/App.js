@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Note from './Components/Note'
-
+//json-server --port 3001 --watch db.json
 
 const App = (props) => {
   const [notes, setNotes] = useState([])
@@ -36,6 +36,9 @@ useEffect(hook, [])
 
 */
 
+ const toggleImportanceOf= (id)=> {
+   console.log(`importance of ${id} needs to be toggled`)
+ }
 
 
 
@@ -55,13 +58,21 @@ useEffect(hook, [])
 
     }
 
-    setNotes(notes.concat(noteObject))
-    setNewNote('')
+    axios
+    .post('http://localhost:3001/notes', noteObject)
+    .then(response => {
+      console.log(response)
+      setNotes(notes.concat(response.data))
+      setNewNote('')
+    })
+
+    // setNotes(notes.concat(noteObject))
+    // setNewNote('')
     
   }
 
   const handleNoteChange= (event) => {
-    console.log(event.target.value)
+    
     setNewNote(event.target.value)
   }
 
@@ -81,7 +92,7 @@ useEffect(hook, [])
       </div>
       <ul>
         {notesToShow.map(note => 
-            <Note key={note.id} note={note} />            
+            <Note key={note.id} note={note} toggleImportance={()=>toggleImportanceOf(note.id)} />            
         )}
         
       </ul>
