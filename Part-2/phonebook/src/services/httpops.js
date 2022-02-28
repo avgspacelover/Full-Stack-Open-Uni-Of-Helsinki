@@ -14,9 +14,14 @@ const addCont = (newObject) => {
 
 }
 
+const removeCont = (id) => {
+    const request = axios.delete(`${baseurl}/${id}`)
+    return request
+}
+
 // const updateCont = (id,newObject) => {
 //     const request =axios.put(`${baseurl}/${id}`, newObject)
 //     return request.then(response => response.data)
 // }
 
-export default { getCont, addCont}
+export default { getCont, addCont, removeCont}

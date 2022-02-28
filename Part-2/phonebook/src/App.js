@@ -3,10 +3,14 @@ import React, { useState, useEffect} from 'react'
 import svManage from './services/httpops.js'
 
 
-const Contact = (props) => {
+const Contact = ({name,number, deleteContact}) => {
   return (
+    <div>
+      <li >{name} : {number} &nbsp; <button onClick={deleteContact}>Delete</button> </li>
+      <br></br>
+    </div>
 
-    <li >{props.name} : {props.number}</li>
+    
 
   )
 }
@@ -32,6 +36,13 @@ const AddContact = (props) => {
     </form>
 
   )
+}
+
+const deleteContactHandler = (id) => {
+  console.log("delete" + id )
+  svManage
+    .removeCont(id)
+
 }
 const SearchBookFn = (props) => {
 
@@ -60,7 +71,7 @@ const SearchbookList = (props) => {
     <div>
       <ul style={{listStyleType:"none"}}>
         {props.search.map((item)=>
-          < Contact key={item.id} name={item.name} number={item.number} />)}
+          < Contact key={item.id} name={item.name} number={item.number} deleteContact={() => deleteContactHandler(item.id)}/>)}
 
       </ul>
     </div>
@@ -74,7 +85,7 @@ const PhonebookList = (props) => {
     <div>
       <ul style={{listStyleType:"none"}}>
         {props.persons.map((item)=>
-          < Contact key={item.id} name={item.name} number={item.number} />)}
+          < Contact key={item.id} name={item.name} number={item.number} deleteContact={() => deleteContactHandler(item.id)} />)}
 
       </ul>
         
