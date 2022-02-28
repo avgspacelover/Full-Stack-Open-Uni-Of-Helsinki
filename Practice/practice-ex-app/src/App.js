@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Note from './Components/Note'
+import noteservice from './services/notes.js'
 //json-server --port 3001 --watch db.json
 
 const App = (props) => {
@@ -13,35 +14,23 @@ const App = (props) => {
 
   useEffect(() => {
     console.log('effect')
-    axios
-      .get('http://localhost:3001/notes')
+    noteservice
+      .getAll()
       .then( response => {
         console.log('promise fulfilled')
         setNotes(response.data)
       })
   }, [])
-/*
- //useEffect working----------
-  const hook = () => {
-  console.log('effect')
-  axios
-    .get('http://localhost:3001/notes')
-    .then(response => {
-      console.log('promise fulfilled')
-      setNotes(response.data)
-    })
-}
 
-useEffect(hook, [])
-
-*/
 
  const toggleImportanceOf= (id)=> {
     const url = `http://localhost:3001/notes/${id}`
     const note = notes.find(n => n.id === id)
     const changedNote = { ...note, important: !note.important }
 
-    axios.put(url, changedNote).then(response => {
+    noteservice
+      .update(id, changedNote)
+      .then(response => {
       setNotes(notes.map(note => note.id !== id ? note : response.data))
     })
   }
