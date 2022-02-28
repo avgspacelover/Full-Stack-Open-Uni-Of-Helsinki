@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+
 import Note from './Components/Note'
 import noteservice from './services/notes.js'
 //json-server --port 3001 --watch db.json
@@ -24,7 +24,7 @@ const App = (props) => {
 
 
  const toggleImportanceOf= (id)=> {
-    const url = `http://localhost:3001/notes/${id}`
+    
     const note = notes.find(n => n.id === id)
     const changedNote = { ...note, important: !note.important }
 
@@ -53,13 +53,13 @@ const App = (props) => {
 
     }
 
-    axios
-    .post('http://localhost:3001/notes', noteObject)
-    .then(response => {
-      console.log(response)
-      setNotes(notes.concat(response.data))
-      setNewNote('')
-    })
+    noteservice
+      .create(noteObject)
+      .then(response => {
+        console.log(response)
+        setNotes(notes.concat(response.data))
+        setNewNote('')
+      })
 
     // setNotes(notes.concat(noteObject))
     // setNewNote('')
