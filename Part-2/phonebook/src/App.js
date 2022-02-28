@@ -89,12 +89,13 @@ const SearchbookList = (props) => {
 const PhonebookList = ({persons,setPersons}) => {
 
   const deleteContactHandler = (id) => {
-    console.log("delete" + id )
-    const result=Window.confirm(`are you sure you want to delete ${persons.id}`)
+    
+    let data=persons.find((elem)=>elem.id===id)
+    const result= window.confirm(`are you sure you want to delete ${data.name}?`);
     if(result){
       svManage
         .removeCont(id)
-        .then(setPersons())
+        .then(setPersons(persons.filter(item=> item.id!== id)))
     }
 
   
