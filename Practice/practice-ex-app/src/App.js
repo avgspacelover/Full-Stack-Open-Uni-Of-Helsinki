@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
-
 import Note from './Components/Note'
 import noteservice from './services/notes.js'
-//json-server --port 3001 --watch db.json
+
 
 const App = (props) => {
   const [notes, setNotes] = useState([])
@@ -16,9 +15,9 @@ const App = (props) => {
     console.log('effect')
     noteservice
       .getAll()
-      .then( response => {
+      .then( intialNotes => {
         console.log('promise fulfilled')
-        setNotes(response.data)
+        setNotes(intialNotes )
       })
   }, [])
 
@@ -30,8 +29,8 @@ const App = (props) => {
 
     noteservice
       .update(id, changedNote)
-      .then(response => {
-      setNotes(notes.map(note => note.id !== id ? note : response.data))
+      .then(returnedNote => {
+      setNotes(notes.map(note => note.id !== id ? note : returnedNote))
     })
   }
 
@@ -55,9 +54,9 @@ const App = (props) => {
 
     noteservice
       .create(noteObject)
-      .then(response => {
-        console.log(response)
-        setNotes(notes.concat(response.data))
+      .then(returnedNote => {
+        console.log(returnedNote)
+        setNotes(notes.concat(returnedNote))
         setNewNote('')
       })
 
@@ -104,3 +103,12 @@ const App = (props) => {
 }
 
 export default App
+
+
+
+
+
+
+
+
+//json-server --port 3001 --watch db.json
