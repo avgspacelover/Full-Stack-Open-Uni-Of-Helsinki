@@ -2,6 +2,18 @@ import React, { useState, useEffect} from 'react'
 
 import svManage from './services/httpops.js'
 
+  /*
+  [
+    { name: 'Arto Hellas',
+      number: 9898982121,
+      id:0 
+    },
+    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
+  ]
+  */
+
 
 const Contact = ({name,number, deleteContact}) => {
   return (
@@ -38,12 +50,7 @@ const AddContact = (props) => {
   )
 }
 
-const deleteContactHandler = (id) => {
-  console.log("delete" + id )
-  svManage
-    .removeCont(id)
 
-}
 const SearchBookFn = (props) => {
 
   return (
@@ -71,7 +78,7 @@ const SearchbookList = (props) => {
     <div>
       <ul style={{listStyleType:"none"}}>
         {props.search.map((item)=>
-          < Contact key={item.id} name={item.name} number={item.number} deleteContact={() => deleteContactHandler(item.id)}/>)}
+          < Contact key={item.id} name={item.name} number={item.number} />)}
 
       </ul>
     </div>
@@ -79,12 +86,24 @@ const SearchbookList = (props) => {
   )
 }
 
-const PhonebookList = (props) => {
+const PhonebookList = ({persons,setPersons}) => {
+
+  const deleteContactHandler = (id) => {
+    console.log("delete" + id )
+    const result=Window.confirm(`are you sure you want to delete ${persons.id}`)
+    if(result){
+      svManage
+        .removeCont(id)
+        .then(setPersons())
+    }
+
+  
+  }
 
   return (
     <div>
       <ul style={{listStyleType:"none"}}>
-        {props.persons.map((item)=>
+        {persons.map((item)=>
           < Contact key={item.id} name={item.name} number={item.number} deleteContact={() => deleteContactHandler(item.id)} />)}
 
       </ul>
@@ -100,12 +119,6 @@ const PhonebookList = (props) => {
 
 const App = () => {
   const [persons, setPersons] = useState([])
-  
-  
-
-
-
-
 
   useEffect(()=> { 
 
@@ -118,18 +131,6 @@ const App = () => {
     
     },[])
 
-
-  /*
-  [
-    { name: 'Arto Hellas',
-      number: 9898982121,
-      id:0 
-    },
-    { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-    { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-    { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ]
-  */
 
   //--STATE MANAGEMENT--------------------------------------
   const [newName, setNewName] = useState('')
@@ -198,6 +199,8 @@ const App = () => {
 
   }
 
+  
+
   const search=persons.filter(item => filter?item.name.toLowerCase().includes(nameSearch.toLowerCase()):item)
    
 
@@ -215,7 +218,7 @@ const App = () => {
       
         <h2>Numbers</h2>
       
-          <PhonebookList persons={persons} />
+          <PhonebookList persons={persons} setPersons={setPersons}/>
 
     </div>
   )
