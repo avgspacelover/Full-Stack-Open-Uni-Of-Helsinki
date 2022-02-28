@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import axios from 'axios'
 
+import svManage from './services/httpops.js'
 
 
 const Contact = (props) => {
@@ -97,12 +97,12 @@ const App = () => {
 
 
   useEffect(()=> { 
-    
-    axios
-      .get("http://localhost:3001/persons")
-      .then((response)=>{
+
+    svManage
+      .getCont()
+      .then((initialContacts)=>{
         
-        setPersons(response.data)
+        setPersons(initialContacts)
       })
     
     },[])
@@ -170,18 +170,16 @@ const App = () => {
         id: persons.length+1
         
       }
-      axios
-      .post("http://localhost:3001/persons", contactObj)
-      .then(response => {
-        setPersons(persons.concat(response.data))
-        setNewName('')
-        setNewNumber('')
 
-      })
-      setPersons(persons.concat(contactObj))
-      setNewName('')
-      setNewNumber('')
-      console.log(persons);
+      svManage
+        .addCont(contactObj)  
+        .then(newContact => {
+          setPersons(persons.concat(newContact))
+          setNewName('')
+          setNewNumber('')
+
+        })
+      
 
     } else{
       window.alert(`${newName} is already present in the PhoneBook, please add another contact`)

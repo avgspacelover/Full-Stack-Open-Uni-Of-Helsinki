@@ -9,7 +9,7 @@ const getAll = () => {
 }
 
 const create = (newObject) => {
-    const request= axios.put(baseurl,newObject)
+    const request= axios.post(baseurl,newObject)
     return request.then(response => response.data)
 }
 
