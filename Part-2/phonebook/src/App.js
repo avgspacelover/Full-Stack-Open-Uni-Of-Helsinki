@@ -167,9 +167,17 @@ const App = () => {
         
         name: newName,
         number: newNumber,
-        id: persons.length
+        id: persons.length+1
         
       }
+      axios
+      .post("http://localhost:3001/persons", contactObj)
+      .then(response => {
+        setPersons(persons.concat(response.data))
+        setNewName('')
+        setNewNumber('')
+
+      })
       setPersons(persons.concat(contactObj))
       setNewName('')
       setNewNumber('')
@@ -205,3 +213,5 @@ const App = () => {
 }
 
 export default App
+
+//json-server --port 3001 --watch db.json
