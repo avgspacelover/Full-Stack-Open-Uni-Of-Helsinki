@@ -13,7 +13,17 @@ import svManage from './services/httpops.js'
     { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
   ]
   */
-
+  const Searchcontact = ({name,number}) => {
+    return (
+      <div>
+        <li >{name} : {number} </li>
+        <br></br>
+      </div>
+  
+      
+  
+    )
+  }
 
 const Contact = ({name,number, deleteContact}) => {
   return (
@@ -78,7 +88,7 @@ const SearchbookList = (props) => {
     <div>
       <ul style={{listStyleType:"none"}}>
         {props.search.map((item)=>
-          < Contact key={item.id} name={item.name} number={item.number} />)}
+          < Searchcontact key={item.id} name={item.name} number={item.number} />)}
 
       </ul>
     </div>
