@@ -39,6 +39,8 @@ const Contact = ({name,number, deleteContact}) => {
 
 const AddContact = (props) => {
 
+ 
+
   return (  
 
     <form onSubmit={props.addContact}>
@@ -197,6 +199,7 @@ const App = () => {
       svManage
         .addCont(contactObj)  
         .then(newContact => {
+          
           setPersons(persons.concat(newContact))
           setNewName('')
           setNewNumber('')
@@ -205,7 +208,34 @@ const App = () => {
       
 
     } else{
-      window.alert(`${newName} is already present in the PhoneBook, please add another contact`)
+      //window.alert(`${newName} is already present in the PhoneBook, please add another contact`)
+
+      let result= window.confirm(`${newName} already exists in the Phonebook. Do you want to update its contact number?`)
+      
+      
+
+      
+      if(result){
+        let data= persons.find((elem) => elem.name === newName)
+        console.log("data", data.id)
+        const contactObj ={
+        
+          name: newName,
+          number: newNumber,
+          id: data.id
+        
+        }
+        svManage
+          .updateCont(data.id,contactObj)
+          .then(updatedContact => {
+            
+            setPersons(persons.filter((elem) => elem.id !== data.id).concat(updatedContact))
+            
+            setNewName('')
+            setNewNumber('')
+          })
+
+      }
     }   
 
   }

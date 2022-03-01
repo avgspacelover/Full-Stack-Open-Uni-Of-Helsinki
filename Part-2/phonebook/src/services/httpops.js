@@ -19,9 +19,9 @@ const removeCont = (id) => {
     return request
 }
 
-// const updateCont = (id,newObject) => {
-//     const request =axios.put(`${baseurl}/${id}`, newObject)
-//     return request.then(response => response.data)
-// }
+const updateCont = (id,newObject) => {
+    const request =axios.put(`${baseurl}/${id}`, newObject)
+    return request.then(response => response.data)
+ }
 
-export default { getCont, addCont, removeCont}
+export default { getCont, addCont, removeCont, updateCont}
