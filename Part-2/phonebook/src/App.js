@@ -254,16 +254,26 @@ const App = () => {
           .then(updatedContact => {
             
             setPersons(persons.filter((elem) => elem.id !== data.id).concat(updatedContact))
-            
             setNewName('')
             setNewNumber('')
 
             setNotif( 
-              ` ${contactObj.name} was updated`
+              `${contactObj.name} was updated`
             )
             setTimeout(() => {
               setNotif(null)
             }, 5000)
+          })
+          .catch(error => {
+            setNotif( 
+              `${contactObj.name} was already removed from server`
+            )
+            setTimeout(() => {
+              setNotif(null)
+            }, 5000)
+
+            setPersons(persons.filter((elem) => elem.id !== data.id))
+            
           })
 
       }
