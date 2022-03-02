@@ -126,6 +126,18 @@ const PhonebookList = ({persons,setPersons}) => {
   )
 }
 
+const Notification = ({ message }) => {
+  if (message === null) {
+    return null
+  }
+
+  return (
+    <div className='error'>
+      {message}
+    </div>
+  )
+}
+
 
 
 
@@ -151,7 +163,13 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
 
   const [nameSearch, setNameSearch] = useState('')
+
   const [filter, setFilter]= useState(false)
+
+  const [notif, setNotif]= useState(' ')
+
+
+
 //--EVENT HANDLERS--------------------------------------
   const handleNameChange= (event) => { 
     setNewName(event.target.value)
@@ -203,6 +221,12 @@ const App = () => {
           setPersons(persons.concat(newContact))
           setNewName('')
           setNewNumber('')
+          setNotif( 
+            ` ${contactObj.name} was added`
+          )
+          setTimeout(() => {
+            setNotif(null)
+          }, 5000)
 
         })
       
@@ -233,6 +257,13 @@ const App = () => {
             
             setNewName('')
             setNewNumber('')
+
+            setNotif( 
+              ` ${contactObj.name} was updated`
+            )
+            setTimeout(() => {
+              setNotif(null)
+            }, 5000)
           })
 
       }
@@ -248,6 +279,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
+      <Notification message={notif} />
       
         <h2> Search </h2>
           
