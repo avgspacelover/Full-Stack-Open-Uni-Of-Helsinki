@@ -44,3 +44,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port  ${PORT}`)
 }) 
 
+// npm install --save-dev nodemon
+//npm run dev
