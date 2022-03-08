@@ -1,5 +1,8 @@
     const express = require('express')
+
     const app= express()
+
+    app.use(express.json())
     
     let persons = [
         { 
@@ -44,6 +47,35 @@
           } else {
             response.status(404).end()
           }
+    })
+
+    app.post('/api/persons', (request,response)=> {
+        const body= request.body
+        let  check= persons.filter((person)=> {
+                        persons.name == body.name || persons.number == body.number
+
+                    })
+        if(!body.name || !body.number){
+            return response.status(400).json({
+                error: "data is missing"
+            })
+        } else if(check.length >=1){
+                console.log(check)
+                return response.status(400).json({
+                    error: "contact already exists in the phonebook!"
+                })
+
+            }
+
+        const person ={
+
+            id: Math.floor(Math.random()* 15000),
+            name: body.name,
+            number: body.number
+        }
+
+        persons = persons.concat(person)
+        response.json(person)
     })
 
     app.delete('/api/persons/:id', (request,response) => {
