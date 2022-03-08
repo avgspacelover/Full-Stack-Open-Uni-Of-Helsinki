@@ -19,3 +19,5 @@
 - http://expressjs.com/en/4x/api.html#res.end
 - https://developer.mozilla.org/en-US/docs/Glossary/Truthy
 - https://stackoverflow.com/questions/14154337/how-to-send-a-custom-http-status-message-in-node-express/36507614#36507614
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1.1
+- https://curl.se/docs/
