@@ -22,4 +22,8 @@
 - https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6.1.1
 - https://curl.se/docs/
 - https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
-
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec7.html#sec7
+- https://expressjs.com/en/api.html
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
+- https://en.wikipedia.org/wiki/CommonJS
