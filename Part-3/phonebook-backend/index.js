@@ -28,6 +28,11 @@
         return response.json(persons)
     })
 
+    app.get('/info', (request, response) => {
+        return response.json(`Phonebook has info for ${persons.length} people ${new Date()}`)
+
+    })
+
     const PORT = 3001
 
     app.listen(PORT, () => {
