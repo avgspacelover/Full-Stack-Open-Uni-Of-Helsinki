@@ -62,9 +62,7 @@
             response.status(404).end()
           }
     })
-
-
-    
+   
 
 
 
@@ -92,9 +90,6 @@
             name: body.name,
             number: body.number
         }
-
-      
-
         
         console.log("hey",person)
 
@@ -111,11 +106,6 @@
         response.status(204).end()
 
     })
-
- 
-
-
-
 
 
 
