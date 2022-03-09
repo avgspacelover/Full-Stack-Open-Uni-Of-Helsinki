@@ -6,7 +6,7 @@
 
     app.use(express.json())
 
-    app.use(morgan('tiny'))
+    //app.use()
     
     let persons = [
         { 
@@ -53,6 +53,19 @@
           }
     })
 
+
+    morgan.token('data', function(req, res) {
+
+        
+        return JSON.stringify(req.body);
+    })
+
+    app.use(
+        morgan(":method :url :status :res[content-length] - :response-time ms :data")
+      )
+
+
+
     app.post('/api/persons', (request,response)=> {
         const body= request.body
         let  check= persons.filter((person)=> {
@@ -64,7 +77,7 @@
                 error: "data is missing"
             })
         } else if(check.length >=1){
-                console.log(check)
+                
                 return response.status(400).json({
                     error: "contact already exists in the phonebook!"
                 })
@@ -78,7 +91,10 @@
             number: body.number
         }
 
-       
+      
+
+        
+        console.log("hey",person)
 
         persons = persons.concat(person)
         response.json(person)
@@ -94,10 +110,7 @@
 
     })
 
-    //morgan()
-
-
-
+ 
 
 
 

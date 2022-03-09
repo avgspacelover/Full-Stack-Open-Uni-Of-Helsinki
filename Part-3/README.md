@@ -28,3 +28,5 @@
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
 - https://en.wikipedia.org/wiki/CommonJS
 - https://github.com/expressjs/morgan
+- https://coralogix.com/blog/morgan-npm-logger-the-complete-guide/
+
