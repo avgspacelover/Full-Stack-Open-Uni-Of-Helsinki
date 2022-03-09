@@ -3,6 +3,8 @@ const express = require('express')
 
 const app = express()
 
+const cors = require('cors')
+app.use(cors)
 app.use(express.json())
 
 let notes = [
@@ -37,7 +39,8 @@ let notes = [
  })
 
  app.get('/api/notes', (request,response)=> {
-   response.json(notes)
+  console.log("yes") 
+  response.json(notes)
  })
 
  app.get('/api/notes/:id', (request, response) => {
