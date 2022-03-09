@@ -1,8 +1,12 @@
     const express = require('express')
 
+    const morgan = require('morgan')
+
     const app= express()
 
     app.use(express.json())
+
+    app.use(morgan('tiny'))
     
     let persons = [
         { 
@@ -74,6 +78,8 @@
             number: body.number
         }
 
+       
+
         persons = persons.concat(person)
         response.json(person)
     })
@@ -87,6 +93,16 @@
         response.status(204).end()
 
     })
+
+    //morgan()
+
+
+
+
+
+
+
+
 
     const PORT = 3001
 
