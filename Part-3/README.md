@@ -36,3 +36,7 @@
 - https://devcenter.heroku.com/articles/getting-started-with-nodejs
 - https://medium.com/@shalandy/deploy-git-subdirectory-to-heroku-ea05e95fce1f
 - https://create-react-app.dev/docs/proxying-api-requests-in-development/
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+- frontend and backend on the same repository for deployment: https://github.com/mars/heroku-cra-node
+- https://github.com/mars/create-react-app-buildpack
+- https://www.npmjs.com/package/shx
