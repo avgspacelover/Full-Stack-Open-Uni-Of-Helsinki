@@ -34,3 +34,4 @@
 - https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 - https://devcenter.heroku.com/articles/getting-started-with-nodejs
+- https://medium.com/@shalandy/deploy-git-subdirectory-to-heroku-ea05e95fce1f
