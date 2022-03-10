@@ -40,3 +40,13 @@
 - frontend and backend on the same repository for deployment: https://github.com/mars/heroku-cra-node
 - https://github.com/mars/create-react-app-buildpack
 - https://www.npmjs.com/package/shx
+
+
+- https://code.visualstudio.com/docs/editor/debugging
+- https://en.wikipedia.org/wiki/Document-oriented_database
+- https://en.wikipedia.org/wiki/NoSQL
+
+- https://docs.mongodb.com/manual/core/databases-and-collections/
+- https://docs.mongodb.com/manual/core/document/
+- https://mongodb.github.io/node-mongodb-native/
+- https://mongoosejs.com/index.html
