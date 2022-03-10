@@ -120,7 +120,7 @@ const App = (props) => {
 
           </button>
       </div>
-      <ul>
+      <ul className='note'>
         {notesToShow.map(note => 
             <Note key={note.id} note={note} toggleImportance={()=>toggleImportanceOf(note.id)} />            
         )}
