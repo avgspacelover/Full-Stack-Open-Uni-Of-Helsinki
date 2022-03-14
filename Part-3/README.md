@@ -48,5 +48,7 @@
 
 - https://docs.mongodb.com/manual/core/databases-and-collections/
 - https://docs.mongodb.com/manual/core/document/
+- https://docs.mongodb.com/manual/reference/limits/#std-label-restrictions-on-db-names
+
 - https://mongodb.github.io/node-mongodb-native/
 - https://mongoosejs.com/index.html
