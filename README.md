@@ -3,6 +3,10 @@
 By University of Helsinki
 
 
+## Sister Repositories
+
+- https://github.com/antariksh17/FSO-notes-app
+- https://github.com/antariksh17/FSO-phonebook
 
 
 
