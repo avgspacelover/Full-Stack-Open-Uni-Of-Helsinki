@@ -52,3 +52,6 @@
 
 - https://mongodb.github.io/node-mongodb-native/
 - https://mongoosejs.com/index.html
+- https://mongoosejs.com/docs/guide.html
+- https://mongoosejs.com/docs/models.html
+- https://docs.mongodb.com/manual/reference/operator/
