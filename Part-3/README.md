@@ -55,3 +55,4 @@
 - https://mongoosejs.com/docs/guide.html
 - https://mongoosejs.com/docs/models.html
 - https://docs.mongodb.com/manual/reference/operator/
+- https://github.com/motdotla/dotenv#readme
