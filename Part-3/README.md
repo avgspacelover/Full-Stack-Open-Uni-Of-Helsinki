@@ -61,3 +61,7 @@
 - https://mongoosejs.com/docs/validation.html#built-in-validators
 - https://mongoosejs.com/docs/validation.html#custom-validators
 - https://github.com/blakehaswell/mongoose-unique-validator#find--updates
+
+
+- https://en.wikipedia.org/wiki/Lint_(software)
+- https://checkstyle.sourceforge.io/
