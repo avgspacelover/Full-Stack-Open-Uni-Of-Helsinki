@@ -65,3 +65,5 @@
 
 - https://en.wikipedia.org/wiki/Lint_(software)
 - https://checkstyle.sourceforge.io/
+- https://github.com/airbnb/javascript
+- https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb

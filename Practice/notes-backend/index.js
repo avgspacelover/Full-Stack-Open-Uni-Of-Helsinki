@@ -9,6 +9,7 @@ const cors = require('cors')
 
 const Note= require('./models/note')
 
+// eslint-disable-next-line no-unused-vars
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
   console.log('Path:  ', request.path)
@@ -29,20 +30,20 @@ app.use(express.static('build'))
 
 
 
- app.get('/api/notes', (request,response)=> {
-    
-    Note.find({}).then(notes => {
+app.get('/api/notes', (request,response) => {
 
-      response.json(notes)
+  Note.find({}).then(notes => {
 
-    })
- })
+    response.json(notes)
+
+  })
+})
 
 
 
 app.get('/api/notes/:id', (request, response, next) => {
   Note.findById(request.params.id).then(note => {
-    
+
     if (note) {
       response.json(note)
     } else {
@@ -50,9 +51,9 @@ app.get('/api/notes/:id', (request, response, next) => {
     }
   })
 
-  .catch(error => next(error))
-  
- })
+    .catch(error => next(error))
+
+})
 
 app.post('/api/notes', (request,response, next) => {
   const body = request.body
@@ -71,13 +72,14 @@ app.post('/api/notes', (request,response, next) => {
     response.json(savedNote)
   })
 
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 
-app.delete('/api/notes/:id', (request, response) => {
-  
+app.delete('/api/notes/:id', (request, response, next) => {
+
   Note.findByIdAndRemove(request.params.id)
+    // eslint-disable-next-line no-unused-vars
     .then(result => {
       response.status(204).end()
     })
@@ -87,16 +89,16 @@ app.delete('/api/notes/:id', (request, response) => {
 app.put('/api/notes/:id', (request, response, next) => {
   const { content, important } = request.body
 
-  const note = {
-    content: body.content,
-    important: body.important,
-  }
+  // const note = {
+  //   content: content,
+  //   important: important,
+  // }
 
   Note.findByIdAndUpdate(
-    request.params.id, 
+    request.params.id,
     { content, important },
     { new: true, runValidators: true, context: 'query' }
-    )
+  )
     .then(updatedNote => {
       response.json(updatedNote)
     })
@@ -127,11 +129,12 @@ app.use(errorHandler)
 
 
 
-const PORT = process.env.PORT 
+// eslint-disable-next-line no-undef
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
   console.log(`Server running on port  ${PORT}`)
-}) 
+})
 
 
 
@@ -142,10 +145,10 @@ app.listen(PORT, () => {
 
 
 
- //  const generateId = () => {
+//  const generateId = () => {
 
 //   const maxId = notes.length > 0
-//     ? Math.max(...notes.map(n => n.id)) 
+//     ? Math.max(...notes.map(n => n.id))
 //     : 0
 
 //   return maxId + 1
@@ -208,7 +211,7 @@ app.listen(PORT, () => {
 //       important: true
 //     }
 //   ]
- /* without express 
+/* without express
   const app = http.createServer((request, response) => {
     response.writeHead(200, { 'Content-Type': 'application/json' })
     response.end(JSON.stringify(notes))
