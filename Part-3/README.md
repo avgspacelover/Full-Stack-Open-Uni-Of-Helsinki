@@ -57,3 +57,7 @@
 - https://docs.mongodb.com/manual/reference/operator/
 - https://github.com/motdotla/dotenv#readme
 - https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
+- https://mongoosejs.com/docs/validation.html
+- https://mongoosejs.com/docs/validation.html#built-in-validators
+- https://mongoosejs.com/docs/validation.html#custom-validators
+- https://github.com/blakehaswell/mongoose-unique-validator#find--updates
