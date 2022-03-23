@@ -13,7 +13,8 @@ By University of Helsinki
 
 ##applications
 
-+ https://ant-notes-practice.herokuapp.com/
++ https://ant-notes-app.herokuapp.com/
++ https://ant-phonebook.herokuapp.com/
 
 
 
