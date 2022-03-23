@@ -167,7 +167,6 @@ const App = ()=>{
   const avg = total ? ((good + (-1)*bad + (0)*neutral)/total) : 0;
 //   const pPerc= (((good-bad)/good)*100)
   const pPerc = good ? ((good-bad) / good * 100) : 0;
-  const k=Math.floor(Math.random() *len);
   //const copy= {...points}
   
   const handleGoodClick = () => {
@@ -183,7 +182,7 @@ const App = ()=>{
   }
 
   const handleQuoteSelect = () => {
-    
+    const k=Math.floor(Math.random() *len);
     setSelected(selected=anecdotes[k])
     setvoteCount(voteCount=0)
 
