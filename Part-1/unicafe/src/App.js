@@ -164,7 +164,8 @@ const App = ()=>{
 
   const total=(good + bad + neutral)
   const avg= ((good + (-1)*bad + (0)*neutral)/total)
-  const pPerc= (((good-bad)/good)*100)
+//   const pPerc= (((good-bad)/good)*100)
+  const pPerc = good ? ((good-bad) / good * 100) : 0;
   const k=Math.floor(Math.random() *len);
   //const copy= {...points}
   
