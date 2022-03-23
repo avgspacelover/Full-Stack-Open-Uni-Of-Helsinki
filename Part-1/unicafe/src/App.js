@@ -52,19 +52,6 @@ const Head = (c)=>{
 
 
 const Stat = (props) => {
-  
-
-  if(props.sum ===0){
-    return(
-      <table>
-          <tbody>
-              <tr>
-                <td>No Feedback Given </td>
-              </tr>
-          </tbody>
-        </table>
-    )
-  }
 
   if(props.text === "Positive Percentage"){
     return (
@@ -119,6 +106,21 @@ const Vote = (props) => {
 
 
   )
+}
+
+const noFeedback = (total) => {
+  if(total === 0) {
+    return <div>No geedback given!</div>
+  } else {
+    return <>
+      <Stat text={"Good"} value={good} sum={total}/>
+      <Stat text={"Neutral"} value={neutral} sum={total}/>
+      <Stat text={"Bad"} value={bad} sum={total}/>
+      <Stat text={"Total"} value={total} sum={total}/>
+      <Stat text={"Average"} value={avg} sum={total}/>
+      <Stat text={"Positive Percentage"} value={pPerc} sum={total}/>
+    </>
+  }
 }
 
 
@@ -220,12 +222,7 @@ const App = ()=>{
 
         <Head head={"Statistics"}/>
 
-        <Stat text={"Good"} value={good} sum={total}/>
-        <Stat text={"Neutral"} value={neutral} sum={total}/>
-        <Stat text={"Bad"} value={bad} sum={total}/>
-        <Stat text={"Total"} value={total} sum={total}/>
-        <Stat text={"Average"} value={avg} sum={total}/>
-        <Stat text={"Positive Percentage"} value={pPerc} sum={total}/>
+        {noFeedback(total, good, neutral, bad, avg, pPerc)}
         
         <Head head={"Anecdote of The Day"}/>
 
