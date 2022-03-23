@@ -163,7 +163,7 @@ const App = ()=>{
   let [popAnecdote, setPopAnecdote]= useState(" ")
 
   const total=(good + bad + neutral)
-  const avg= ((good + (-1)*bad + (0)*neutral)/total)
+  const avg = total ? ((good + (-1)*bad + (0)*neutral)/total) : 0;
 //   const pPerc= (((good-bad)/good)*100)
   const pPerc = good ? ((good-bad) / good * 100) : 0;
   const k=Math.floor(Math.random() *len);
