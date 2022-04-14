@@ -11,7 +11,7 @@ By University of Helsinki
 
 
 
-##applications
+## Applications
 
 + https://ant-notes-practice.herokuapp.com/
 
@@ -19,4 +19,6 @@ By University of Helsinki
 
 
 
-###submission: https://studies.cs.helsinki.fi/stats/courses/fullstackopen
+### Submission
+
+- https://studies.cs.helsinki.fi/stats/courses/fullstackopen
