@@ -1,4 +1,4 @@
-# Full Stack Open React Course
+# Full Stack Open 2022 Course
 
 By University of Helsinki
 
