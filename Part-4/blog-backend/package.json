@@ -4,10 +4,9 @@
   "description": "full-stack-open part 4 blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
-
+    "dev": "nodemon index.js",
+    "test": "jest --verbose"
   },
   "author": "antariksh",
   "license": "ISC",
@@ -18,6 +17,10 @@
     "mongoose": "^6.3.6"
   },
   "devDependencies": {
+    "jest": "^28.1.1",
     "nodemon": "^2.0.16"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
