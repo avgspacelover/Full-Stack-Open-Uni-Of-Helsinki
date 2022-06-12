@@ -149,12 +149,22 @@ describe('total likes', () => {
 
   })
 
-  // describe('author with most blogs', ()=> {
-  //   let ans = {
-  //     author: "Robert C. Martin",
-  //     blogs: 3
-  //   }
+  describe('author with most blogs', ()=> {
+    let ans = {
+      author: "Robert C. Martin",
+      blogs: 3
+    }
 
-  //   let check = listHelper.mostBlogs(blogs)
-  //   expect(check).toEqual(ans)
-  // }) 
+    let check = listHelper.mostBlogs(blogs)
+    expect(check).toEqual(ans)
+  }) 
+
+  describe('author with most likes', ()=> {
+    let ans = {
+      author: "Edsger W. Dijkstra",
+      likes: 17
+    }
+
+    let check = listHelper.mostLikes(blogs)
+    expect(check).toEqual(ans)
+  }) 
