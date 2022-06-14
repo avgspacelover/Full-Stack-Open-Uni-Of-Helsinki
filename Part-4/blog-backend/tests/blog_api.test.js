@@ -10,7 +10,7 @@ const initialBlogs = [
         title: "TDD harms architecture",
         author: "Robert C. Martin",
         url: "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
-        likes: 0,
+        likes: 11,
   
     },
     {
@@ -73,6 +73,42 @@ test('addition of a new blog' , async () => {
     expect(response.body).toHaveLength(initialBlogs.length+1)
     
 })
+
+test(' if likes property missing, value defaults to 0' , async()=> {
+    const newBlog = {
+        title: "React maybe",
+        author: "Michael Chan maybe",
+        url: "https://reactpatterns.com/maybe",
+      }
+
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+    
+    const response = await api.get('/api/blogs',{new:true})
+    const db = response.body
+    console.log(db)
+    let len =db.length
+    expect(db[len-1].likes).toEqual(0)
+    
+})
+
+test(' if title + url property missing, throws bad request' , async()=> {
+    const newBlog = {
+
+        author: "Michael Chan",
+        likes: 8,
+      }
+
+    await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(400)    
+    
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })

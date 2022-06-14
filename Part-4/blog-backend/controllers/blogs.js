@@ -12,7 +12,15 @@ blogsRouter.get('/', async(request, response) => {
 })
   
 blogsRouter.post('/', async (request, response) => {
+  console.log("req", request.body["url"], request.body["likes"])
+  if(!request.body["url"] || !request.body["title"]){
+    response.status(400).end()
+  } else if(!request.body["likes"]){
+    request.body.likes=0;
+  }
   const blog = new Blog(request.body)
+  console.log("final",blog)
+
   
   let result= blog.save()
 
