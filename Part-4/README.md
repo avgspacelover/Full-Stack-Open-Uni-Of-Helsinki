@@ -18,3 +18,4 @@
 - https://jestjs.io/docs/en/api#testonlyname-fn-timeout
 - https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch4.md#iterating-generators-asynchronously
 - http://callbackhell.com/
+- https://github.com/davidbanham/express-async-errors
