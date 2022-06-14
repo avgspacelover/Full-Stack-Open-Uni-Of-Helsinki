@@ -17,23 +17,18 @@ notesRouter.get('/:id', (request, response, next) => {
     })
     .catch(error => next(error))
 })
-
-notesRouter.post('/', (request, response, next) => {
+notesRouter.post('/', async (request, response, next) => {
   const body = request.body
 
   const note = new Note({
     content: body.content,
     important: body.important || false,
-    date: new Date()
+    date: new Date(),
   })
 
-  note.save()
-    .then(savedNote => {
-      response.status(201).json(savedNote)
-    })
-    .catch(error => next(error))
+  const savedNote = await note.save()
+  response.status(201).json(savedNote)
 })
-
 notesRouter.delete('/:id', (request, response, next) => {
   Note.findByIdAndRemove(request.params.id)
     .then(() => {

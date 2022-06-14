@@ -21,5 +21,5 @@ test('reverse of releveler', () => {
 test('palindrom of wrong', () => {
   const result = reverse('wrong')
 
-  expect(result).toBe('rgown')
+  expect(result).toBe('gnorw')
 })
