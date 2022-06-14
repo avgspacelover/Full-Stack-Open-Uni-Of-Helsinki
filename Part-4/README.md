@@ -19,3 +19,5 @@
 - https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch4.md#iterating-generators-asynchronously
 - http://callbackhell.com/
 - https://github.com/davidbanham/express-async-errors
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
