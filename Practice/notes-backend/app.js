@@ -28,3 +28,13 @@ app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
 module.exports = app
+
+
+/*
+// eslint-disable-next-line no-trailing-spaces
+If you are deploying this application to heroku, keep in mind that if cross-env is saved as a development dependency, it would cause an application error on your web server.
+To fix this, change cross-env to a production dependency by running this in the command line:
+
+npm i cross-env -P
+
+*/
