@@ -21,3 +21,4 @@
 - https://github.com/davidbanham/express-async-errors
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+- https://jestjs.io/docs/expect#tobedefined

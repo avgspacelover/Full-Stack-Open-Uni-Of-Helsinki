@@ -45,6 +45,16 @@ test('all the blogs are returned' , async ()=> {
     
 }, 100000)
 
+test('verify existence of id prop' , async ()=> {
+    const resp = await api.get('/api/blogs')
+    let obj= resp.body
+    obj.forEach(item => {
+
+        expect(item.id).toBeDefined()    
+    });
+    
+})
+
 afterAll(() => {
     mongoose.connection.close()
 })
