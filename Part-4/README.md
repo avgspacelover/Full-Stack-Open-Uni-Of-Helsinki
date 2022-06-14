@@ -12,3 +12,9 @@
 - https://github.com/visionmedia/supertest
 - https://github.com/visionmedia/superagent
 - https://jestjs.io/docs/api#afterallfn-timeout
+- https://jestjs.io/docs/setup-teardown
+- https://jestjs.io/docs/en/api.html#beforeeachfn-timeout
+- https://jestjs.io/docs/expect#tocontainitem
+- https://jestjs.io/docs/en/api#testonlyname-fn-timeout
+- https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch4.md#iterating-generators-asynchronously
+- http://callbackhell.com/
