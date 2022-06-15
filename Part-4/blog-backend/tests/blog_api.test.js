@@ -81,17 +81,17 @@ test(' if likes property missing, value defaults to 0' , async()=> {
         url: "https://reactpatterns.com/maybe",
       }
 
-    await api
+    const response = await api
         .post('/api/blogs')
         .send(newBlog)
         .expect(201)
         .expect('Content-Type', /application\/json/)
     
-    const response = await api.get('/api/blogs',{new:true})
-    const db = response.body
-    console.log(db)
-    let len =db.length
-    expect(db[len-1].likes).toEqual(0)
+    console.log(response.body)
+    const savedBlog = await Blog.findById(response.body.id);
+
+    expect(savedBlog.likes).toBe(0);
+
     
 })
 
