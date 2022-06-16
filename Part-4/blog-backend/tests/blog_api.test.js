@@ -120,9 +120,6 @@ test('updating a blog' , async()=> {
 
     const updatedBlog = {
         ...blogToUpdate,
-        title: "Changed title",
-        author: "Changed author",
-        url: "changed url",
         likes: 777
     }
     const response = await api
