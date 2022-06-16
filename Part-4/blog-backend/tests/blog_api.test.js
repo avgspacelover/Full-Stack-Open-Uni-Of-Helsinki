@@ -87,7 +87,7 @@ test(' if likes property missing, value defaults to 0' , async()=> {
         .expect(201)
         .expect('Content-Type', /application\/json/)
     
-    console.log(response.body)
+
     const savedBlog = await Blog.findById(response.body.id);
 
     expect(savedBlog.likes).toBe(0);
@@ -95,7 +95,7 @@ test(' if likes property missing, value defaults to 0' , async()=> {
     
 })
 
-test(' if title + url property missing, throws bad request' , async()=> {
+test('if title + url property missing, throws bad request' , async()=> {
     const newBlog = {
 
         author: "Michael Chan",
@@ -108,6 +108,57 @@ test(' if title + url property missing, throws bad request' , async()=> {
         .expect(400)    
     
 })
+
+
+test('updating a blog' , async()=> {
+
+    const blogs = await Blog.find({})
+    const blogFirst= blogs.map(blog => blog.toJSON())
+    //console.log("SEE THIS", blogFirst)
+
+    const blogToUpdate= blogFirst[0]
+
+    const updatedBlog = {
+        ...blogToUpdate,
+        title: "Changed title",
+        author: "Changed author",
+        url: "changed url",
+        likes: 777
+    }
+    const response = await api
+    .put(`/api/blogs/${blogToUpdate.id}`)
+    .send(updatedBlog)
+    .expect(201)
+
+    const processedBlogToView = JSON.parse(JSON.stringify(updatedBlog))
+    //console.log("processed", processedBlogToView, "actual updated", updatedBlog,"response", response.body)
+    expect(response.body).toEqual(processedBlogToView)
+})
+
+test('succeeds with status code 204 if id is valid', async () => {
+
+    const blogs = await Blog.find({})
+    const blogFirst= blogs.map(blog => blog.toJSON())
+    //console.log("SEE THIS", blogFirst)
+
+    const blogToDelete= blogFirst[0]
+    console.log("watch", blogToDelete)
+    await api
+      .delete(`/api/blogs/${blogToDelete.id}`)
+      .expect(204)
+
+    const blogsAfter = await Blog.find({})
+    console.log("after", blogsAfter)
+    const blogsAfterObj= blogsAfter.map(blog => blog.toJSON())
+   
+    expect(blogsAfterObj).toHaveLength(
+      initialBlogs.length - 1
+    )
+
+    const ids = blogsAfterObj.map(item => item.id)
+
+    expect(ids).not.toContain(blogToDelete.id)
+  })
 
 afterAll(() => {
     mongoose.connection.close()
