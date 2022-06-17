@@ -22,3 +22,15 @@
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
 - https://jestjs.io/docs/expect#tobedefined
+
+
+- https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/ 
+- https://en.wikipedia.org/wiki/Cryptographic_hash_function
+- https://github.com/kelektiv/node.bcrypt.js
+- https://codahale.com/how-to-safely-store-a-password/
+- https://github.com/kelektiv/node.bcrypt.js/#a-note-on-rounds
+- https://en.wikipedia.org/wiki/Test-driven_development
+- https://www.npmjs.com/package/mongoose-unique-validator
+- http://mongoosejs.com/docs/populate.html
+- https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only
+
