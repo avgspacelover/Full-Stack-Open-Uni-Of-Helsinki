@@ -136,16 +136,16 @@ test('succeeds with status code 204 if id is valid', async () => {
 
     const blogs = await Blog.find({})
     const blogFirst= blogs.map(blog => blog.toJSON())
-    //console.log("SEE THIS", blogFirst)
+
 
     const blogToDelete= blogFirst[0]
-    console.log("watch", blogToDelete)
+
     await api
       .delete(`/api/blogs/${blogToDelete.id}`)
       .expect(204)
 
     const blogsAfter = await Blog.find({})
-    console.log("after", blogsAfter)
+
     const blogsAfterObj= blogsAfter.map(blog => blog.toJSON())
    
     expect(blogsAfterObj).toHaveLength(
