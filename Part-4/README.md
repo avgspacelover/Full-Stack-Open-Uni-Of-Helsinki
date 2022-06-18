@@ -34,3 +34,12 @@
 - http://mongoosejs.com/docs/populate.html
 - https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results/#return-the-specified-fields-and-the-id-field-only
 
+
+- https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication#toc-how-token-based-works
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Authentication_schemes
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+- https://www.npmjs.com/package/express-jwt
+- https://redis.io/
+

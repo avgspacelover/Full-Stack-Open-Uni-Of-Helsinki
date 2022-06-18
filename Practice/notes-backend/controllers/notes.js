@@ -1,4 +1,7 @@
 const notesRouter = require('express').Router()
+
+const jwt = require('jsonwebtoken')
+
 const Note = require('../models/note')
 const User = require('../models/user')
 
@@ -9,8 +12,22 @@ notesRouter.get('/', async (request, response) => {
   response.json(notes)
 })
 
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+  if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    return authorization.substring(7)
+  }
+  return null
+}
+
 notesRouter.post('/', async (request, response) => {
   const body = request.body
+
+  const token = getTokenFrom(request)
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+  if (!decodedToken.id) {
+    return response.status(401).json({ error: 'token missing or invalid' })
+  }
 
   const user = await User.findById(body.userId)
 
@@ -58,3 +75,12 @@ notesRouter.put('/:id', async (request, response) => {
 })
 
 module.exports = notesRouter
+
+/*
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFudCIsImlkIjoiNjJhZGIwNGY4NGFjMWU1MmZhMzRiYzAxIiwiaWF0IjoxNjU1NTUxMjQwLCJleHAiOjE2NTU1NTQ4NDB9.eoE2uYkukcWHS1qZ-rw0WW6wDqGdrYPzfJkGjfZ5KBY",
+    "username": "ant",
+    "name": "antariksh"
+}
+*/
