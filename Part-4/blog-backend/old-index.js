@@ -12,12 +12,12 @@ const blogSchema = new mongoose.Schema({
   likes: Number
 })
 blogSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-      returnedObject.id =returnedObject._id.toString()
-      delete returnedObject._id
-      delete returnedObject.__v
-    }
-  })
+  transform: (document, returnedObject) => {
+    returnedObject.id =returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
 const Blog = mongoose.model('Blog', blogSchema)
 
 process.env.MONGODB_URI
@@ -47,10 +47,10 @@ app.post('/api/blogs', (request, response) => {
 })
 
 app.delete('/api/blogs/:id', (req, resp) => {
-    Blog.findByIdAndRemove(req.params.id)
-        .then(result => {
-            resp.status(204).end()
-        });
+  Blog.findByIdAndRemove(req.params.id)
+    .then(result => {
+      resp.status(204).end()
+    })
 
 })
 
